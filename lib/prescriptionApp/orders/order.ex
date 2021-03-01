@@ -16,6 +16,6 @@ defmodule PrescriptionApp.Orders.Order do
   def changeset(order, attrs) do
     order
     |> cast(attrs, [:patient_name, :address, :pickup_date, :pickup_time, :courier])
-    |> validate_required([:patient_name, :address, :pickup_date, :pickup_time, :courier])
+    |> validate_required([:patient_name, :address, :pickup_date, :pickup_time])
   end
 end

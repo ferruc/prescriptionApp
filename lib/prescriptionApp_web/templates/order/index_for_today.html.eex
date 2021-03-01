@@ -1,4 +1,4 @@
-<h1>Listing Orders</h1>
+<h1>Listing Orders for Today</h1>
 
 <table>
   <thead>
@@ -7,7 +7,7 @@
       <th>Patient Address</th>
       <th>Pickup date</th>
       <th>Pickup time</th>
-      <th>Courier</th>
+
 
       <th></th>
     </tr>
@@ -19,7 +19,7 @@
       <td><%= order.address %></td>
       <td><%= order.pickup_date %></td>
       <td><%= order.pickup_time %></td>
-      <td><%= order.courier %></td>
+    
 
       <td>
         <span><%= link "Show", to: Routes.order_path(@conn, :show, order) %></span>
@@ -32,4 +32,3 @@
 </table>
 
 <span><%= link "New Order", to: Routes.order_path(@conn, :new) %></span>
-

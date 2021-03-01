@@ -17,6 +17,8 @@
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
               <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
             <% end %>
+
+            <li><a href="/orders">Orders</a></li>
           </ul>
         </nav>
         <a href="https://scriptdrop.co/" class="phx-logo">

@@ -8,6 +8,7 @@ defmodule PrescriptionApp.Repo.Migrations.CreateOrders do
       add :pickup_date, :date
       add :pickup_time, :time
       add :courier, :string
+      add :deliveried, :bool
 
       timestamps()
     end

@@ -5,8 +5,13 @@ defmodule PrescriptionAppWeb.OrderController do
   alias PrescriptionApp.Orders.Order
 
   def index(conn, _params) do
+    orders = Orders.list_today_orders()
+    render(conn, "index_for_today.html", orders: orders)
+  end
+
+  def index2(conn, _params) do
     orders = Orders.list_orders()
-    render(conn, "index.html", orders: orders)
+    render(conn, "index2.html", orders: orders)
   end
 
   def new(conn, _params) do

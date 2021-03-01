@@ -21,9 +21,6 @@
   <%= time_select f, :pickup_time %>
   <%= error_tag f, :pickup_time %>
 
-  <%= label f, :set_courier %>
-  <%= text_input f, :courier %>
-  <%= error_tag f, :courier %>
 
   <div>
     <%= submit "Save" %>

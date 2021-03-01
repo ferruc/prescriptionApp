@@ -21,6 +21,22 @@ defmodule PrescriptionApp.Orders do
     Repo.all(Order)
   end
 
+  
+  @doc """
+  Returns the list of future events.
+  
+  ## Examples
+  
+      iex> list_future_events()
+      [%Event{}, ...]
+  
+    """
+  def list_today_orders do
+    query = from e in PrescriptionApp.Orders.Order,
+    where: e.pickup_date == ^DateTime.utc_now
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single order.
 
