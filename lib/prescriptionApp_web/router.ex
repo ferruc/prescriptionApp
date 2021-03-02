@@ -17,7 +17,23 @@ defmodule PrescriptionAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    
+    resources "/pharmacies", PharmacyController
     resources "/orders", OrderController
+
+  end
+
+  scope "/phar", PrescriptionAppWeb.Pharmacy, as: :pharmacy do
+    pipe_through :browser
+  
+    resources "/orders", OrderController 
+    
+  end
+
+  scope "/admin", PrescriptionAppWeb.Admin, as: :admin do
+    pipe_through :browser
+  
+    resources "/pharmacies", PharmacyController
   end
 
   # Other scopes may use custom stacks.

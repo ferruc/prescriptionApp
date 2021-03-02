@@ -8,6 +8,7 @@ defmodule PrescriptionApp.Orders.Order do
     field :patient_name, :string
     field :pickup_date, :date
     field :pickup_time, :time
+    field :deliveried, :boolean
 
     timestamps()
   end
