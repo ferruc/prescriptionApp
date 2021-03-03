@@ -1,0 +1,18 @@
+<h1>Show Courier</h1>
+
+<ul>
+
+  <li>
+    <strong>Courier name:</strong>
+    <%= @courier.courier_name %>
+  </li>
+
+  <li>
+    <strong>Courier address:</strong>
+    <%= @courier.courier_address %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.courier_path(@conn, :edit, @courier) %></span>
+<span><%= link "Back", to: Routes.courier_path(@conn, :index) %></span>

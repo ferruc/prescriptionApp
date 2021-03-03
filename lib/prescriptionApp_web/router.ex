@@ -20,6 +20,7 @@ defmodule PrescriptionAppWeb.Router do
     
     resources "/pharmacies", PharmacyController
     resources "/orders", OrderController
+    resources "/couriers", CourierController
 
   end
 
