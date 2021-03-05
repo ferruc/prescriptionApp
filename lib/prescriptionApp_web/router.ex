@@ -21,21 +21,20 @@ defmodule PrescriptionAppWeb.Router do
     resources "/pharmacies", PharmacyController
     resources "/orders", OrderController
     resources "/couriers", CourierController
+    resources "/users", UserController
+
 
   end
 
-  scope "/phar", PrescriptionAppWeb.Pharmacy, as: :pharmacy do
-    pipe_through :browser
+
+
+  #scope "/admin", PrescriptionAppWeb.Admin, as: :admin do
+  #  pipe_through :browser
+  #
+  #  resources "/pharmacies", PharmacyController
+  #end
+
   
-    resources "/orders", OrderController 
-    
-  end
-
-  scope "/admin", PrescriptionAppWeb.Admin, as: :admin do
-    pipe_through :browser
-  
-    resources "/pharmacies", PharmacyController
-  end
 
   # Other scopes may use custom stacks.
   # scope "/api", PrescriptionAppWeb do

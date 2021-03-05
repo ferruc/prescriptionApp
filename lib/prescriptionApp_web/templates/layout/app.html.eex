@@ -20,6 +20,9 @@
 
             <li><a href="/orders">Orders</a></li>
             <li><a href="/pharmacies">Pharmacies</a></li>
+            <li><a href="/users">Users</a></li>
+            
+        
           </ul>
         </nav>
         <a href="https://scriptdrop.co/" class="phx-logo">

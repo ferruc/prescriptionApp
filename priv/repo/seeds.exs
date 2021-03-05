@@ -29,7 +29,6 @@ PrescriptionApp.Repo.insert!(%PrescriptionApp.Pharmacies.Pharmacy{
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Couriers.Courier{
     courier_name: "Same Day Delivery",
     courier_address: "4925 LA Ave, Los Angeles, CA 90056"
-   # pharmacy_id: 1 
 })
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Couriers.Courier{
     courier_name: "Previous Day Delivery",
@@ -47,4 +46,12 @@ PrescriptionApp.Repo.insert!(%PrescriptionApp.Couriers.Pharmacy_courier{
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Couriers.Pharmacy_courier{
     pharmacy_id: 3,
     courier_id: 2
+})
+PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.User{
+    name: "user1",
+    email: "user1@BetterRx.com"
+})
+PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Pharmacy_user{
+    pharmacy_id: 2,
+    user_id: 1
 })
