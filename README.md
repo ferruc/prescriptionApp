@@ -19,12 +19,23 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
 
-# What was the hardest part of the implementation?
-Understand how works elixir functional language and understand how works Ecto to create queries
-# What would be your next couple of tasks if you had more time?
-Create independent entity for Patient, now this data is in OrderCreate login module that allows use permissions to Pharmacy, Courier rolesImplement login with OAuth, that can use permissionsImplement complete administration module in order to crete Roles, PermissionsModify presentation layer
-# How could we change the project to be more interesting?
-Create a module with order tracking in real timeCreate a Geo spatial module with location information (Pharmacies, Couriers, Users) that allow take decisions about deliveries Create an algorithm in order to optimize time deliveries
+## What was the hardest part of the implementation?
+
+Understand how works elixir functional language and understand how works Ecto to create queries.
+
+## What would be your next couple of tasks if you had more time?
+
+* Create independent entity for Patient, now this data is in Order
+* Create login module that allows use permissions to Pharmacy, Courier roles
+* Implement login with OAuth, that can use permissions
+* Implement complete administration module in order to crete Roles, Permissions
+* Modify presentation layer.
+
+## How could we change the project to be more interesting?
+
+* Create a module with order tracking in real time.
+* Create a Geo spatial module with location information (Pharmacies, Couriers, Users) that allow take decisions about deliveries.
+* Create an algorithm in order to optimize time deliveries.
 
 
 
