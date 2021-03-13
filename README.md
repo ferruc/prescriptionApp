@@ -19,16 +19,18 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
 
+## See the file:Data Model deliveryapp with test data
+
 ## What was the hardest part of the implementation?
 
 Understand how works elixir functional language and understand how works Ecto to create queries.
 
 ## What would be your next couple of tasks if you had more time?
 
-* Create independent entity for Patient, now this data is in Order
-* Create login module that allows use permissions to Pharmacy, Courier roles
-* Implement login with OAuth, that can use permissions
-* Implement complete administration module in order to crete Roles, Permissions
+* Create independent entity for Patient, now this data is in Order.
+* Create login module that allows use permissions to Pharmacy and Courier roles.
+* Implement login with OAuth, that can use permissions.
+* Implement complete administration module in order to crete Roles, Permissions.
 * Modify presentation layer.
 
 ## How could we change the project to be more interesting?
