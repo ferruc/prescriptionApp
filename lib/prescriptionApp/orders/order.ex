@@ -2,13 +2,17 @@ defmodule PrescriptionApp.Orders.Order do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias PrescriptionApp.Orders.Delivery
+
   schema "orders" do
     field :address, :string
     field :courier, :string
     field :patient_name, :string
     field :pickup_date, :date
     field :pickup_time, :time
-    field :deliveried, :boolean
+    field :user_id, :id
+    #field :deliveried, :boolean
+    has_one :delivery, Delivery
 
     timestamps()
   end

@@ -1,0 +1,38 @@
+<h1>Listing Orders Assigned</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Patient Name</th>
+      <th>Patient Address</th>
+      <th>Pickup date</th>
+      <th>Pickup time</th>
+      
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for delivery <- @deliveries do %>
+    <tr>
+      <td><%= delivery.patient_name %></td>
+      <td><%= delivery.address %></td>
+      <td><%= delivery.pickup_date %></td>
+      <td><%= delivery.pickup_time %></td>
+      
+
+      
+    
+
+      
+
+      <td>
+        <span><%= link "Show", to: Routes.delivery_path(@conn, :show, delivery) %></span>
+        <span><%= link "Deliver", to: Routes.delivery_path(@conn, :edit, delivery) %></span>
+    
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+

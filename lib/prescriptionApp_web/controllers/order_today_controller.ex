@@ -1,22 +1,20 @@
-defmodule PrescriptionAppWeb.OrderController do
+defmodule PrescriptionAppWeb.Order_todayController do 
   use PrescriptionAppWeb, :controller
 
   alias PrescriptionApp.Orders
   alias PrescriptionApp.Orders.Order
  
   
-  def today_orders(conn, _params) do
+  def index(conn, _params) do
     orders = Orders.list_today_orders()
     render(conn, "index_for_today.html", orders: orders)
   end
 
-  
-
-  def index(conn, _params) do
-    orders = Orders.list_orders()
-    today_orders = Orders.list_today_orders()
-    render(conn, "index.html", orders: orders, today_orders: today_orders)
+  defp today_orders(conn, _params) do
+    orders = Orders.list_today_orders()
+    render(conn, "index_for_today.html", orders: orders)
   end
+
 
   def new(conn, _params) do
     changeset = Orders.change_order(%Order{})

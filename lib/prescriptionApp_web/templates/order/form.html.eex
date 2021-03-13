@@ -21,6 +21,14 @@
   <%= time_select f, :pickup_time %>
   <%= error_tag f, :pickup_time %>
 
+  <div class="form-group" visibility: hidden>
+   <%= inputs_for f, :delivery, fn cf -> %>
+     <%= label cf, :delivered %>
+     <%= text_input cf, :delivered %>
+     <%= error_tag cf, :delivered %>
+   <% end %>
+ </div>
+
 
   <div>
     <%= submit "Save" %>

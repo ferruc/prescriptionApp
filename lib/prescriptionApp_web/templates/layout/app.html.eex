@@ -13,14 +13,16 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
 
-            <li><a href="/orders">Orders</a></li>
-            <li><a href="/pharmacies">Pharmacies</a></li>
-            <li><a href="/users">Users</a></li>
+
+            <li><a href="/orders">Pharmacy->Orders</a></li>
+            
+            <li><a href="/deliveries">Courier->Orders assigned</a></li>
+            <li><a href="/couriers">Admin->Couriers</a></li>
+            <li><a href="/pharmacies">Admin->Pharmacies</a></li>
+            <li><a href="/users">Admin->Users</a></li>
+            
+
             
         
           </ul>

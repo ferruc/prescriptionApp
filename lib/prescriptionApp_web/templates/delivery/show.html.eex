@@ -1,0 +1,18 @@
+<h1>Show Delivery</h1>
+
+<ul>
+
+  <li>
+    <strong>Delivery date:</strong>
+    <%= @delivery.delivery_date %>
+  </li>
+
+  <li>
+    <strong>Delivered:</strong>
+    <%= @delivery.delivered %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.delivery_path(@conn, :edit, @delivery) %></span>
+<span><%= link "Back", to: Routes.delivery_path(@conn, :index) %></span>

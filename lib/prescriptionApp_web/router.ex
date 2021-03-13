@@ -20,8 +20,11 @@ defmodule PrescriptionAppWeb.Router do
     
     resources "/pharmacies", PharmacyController
     resources "/orders", OrderController
+    get "/orders", Order_todayController , :today_orders
+    #get "/orders", OrderController , :index
     resources "/couriers", CourierController
     resources "/users", UserController
+    resources "/deliveries", DeliveryController
 
 
   end

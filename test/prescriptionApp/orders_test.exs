@@ -69,4 +69,65 @@ defmodule PrescriptionApp.OrdersTest do
       assert %Ecto.Changeset{} = Orders.change_order(order)
     end
   end
+
+  describe "deliveries" do
+    alias PrescriptionApp.Orders.Delivery
+
+    @valid_attrs %{delivered: true, delivery_date: ~D[2010-04-17]}
+    @update_attrs %{delivered: false, delivery_date: ~D[2011-05-18]}
+    @invalid_attrs %{delivered: nil, delivery_date: nil}
+
+    def delivery_fixture(attrs \\ %{}) do
+      {:ok, delivery} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Orders.create_delivery()
+
+      delivery
+    end
+
+    test "list_deliveries/0 returns all deliveries" do
+      delivery = delivery_fixture()
+      assert Orders.list_deliveries() == [delivery]
+    end
+
+    test "get_delivery!/1 returns the delivery with given id" do
+      delivery = delivery_fixture()
+      assert Orders.get_delivery!(delivery.id) == delivery
+    end
+
+    test "create_delivery/1 with valid data creates a delivery" do
+      assert {:ok, %Delivery{} = delivery} = Orders.create_delivery(@valid_attrs)
+      assert delivery.delivered == true
+      assert delivery.delivery_date == ~D[2010-04-17]
+    end
+
+    test "create_delivery/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Orders.create_delivery(@invalid_attrs)
+    end
+
+    test "update_delivery/2 with valid data updates the delivery" do
+      delivery = delivery_fixture()
+      assert {:ok, %Delivery{} = delivery} = Orders.update_delivery(delivery, @update_attrs)
+      assert delivery.delivered == false
+      assert delivery.delivery_date == ~D[2011-05-18]
+    end
+
+    test "update_delivery/2 with invalid data returns error changeset" do
+      delivery = delivery_fixture()
+      assert {:error, %Ecto.Changeset{}} = Orders.update_delivery(delivery, @invalid_attrs)
+      assert delivery == Orders.get_delivery!(delivery.id)
+    end
+
+    test "delete_delivery/1 deletes the delivery" do
+      delivery = delivery_fixture()
+      assert {:ok, %Delivery{}} = Orders.delete_delivery(delivery)
+      assert_raise Ecto.NoResultsError, fn -> Orders.get_delivery!(delivery.id) end
+    end
+
+    test "change_delivery/1 returns a delivery changeset" do
+      delivery = delivery_fixture()
+      assert %Ecto.Changeset{} = Orders.change_delivery(delivery)
+    end
+  end
 end
