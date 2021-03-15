@@ -1,9 +1,13 @@
 defmodule PrescriptionAppWeb.OrderController do
   use PrescriptionAppWeb, :controller
 
+  
+
   alias PrescriptionApp.Orders
   alias PrescriptionApp.Orders.Order
- 
+
+  
+  
   
   def today_orders(conn, _params) do
     orders = Orders.list_today_orders()
@@ -13,8 +17,8 @@ defmodule PrescriptionAppWeb.OrderController do
   
 
   def index(conn, _params) do
-    orders = Orders.list_orders()
-    today_orders = Orders.list_today_orders()
+    orders = Orders.list_orders(conn.assigns.current_user)
+    today_orders = Orders.list_today_orders(conn.assigns.current_user)
     render(conn, "index.html", orders: orders, today_orders: today_orders)
   end
 
@@ -69,4 +73,13 @@ defmodule PrescriptionAppWeb.OrderController do
     |> put_flash(:info, "Order deleted successfully.")
     |> redirect(to: Routes.order_path(conn, :index))
   end
+
+  defp authenticate(conn, options) do
+    if get_session(conn, :email) in options[:usernames] do
+      conn
+    else
+      conn |> redirect(to: "/") |> halt()
+    end
+  end
+
 end

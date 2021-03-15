@@ -50,7 +50,7 @@ PrescriptionApp.Repo.insert!(%PrescriptionApp.Couriers.Pharmacy_courier{
     courier_id: 2
 })
 #seed create Users pharmacies
-#1
+#1 BetterRx
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.User{
     name: "user1",
     username: "user1BetterRx"
@@ -83,7 +83,7 @@ PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.User{
 })
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Credential{
     email: "user3@DrugsRUs.com",
-    user_id: 2
+    user_id: 3
 })
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Pharmacy_user{
     pharmacy_id: 3,
@@ -106,13 +106,28 @@ PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Courier_user{
 #2
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.User{
     name: "user5",
-    username: "user4PreviousDayDelivery"
+    username: "user5PreviousDayDelivery"
 })
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Credential{
-    email: "user4@PreviousDayDelivery.com",
-    user_id: 4
+    email: "user5@PreviousDayDelivery.com",
+    user_id: 5
 })
 PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Courier_user{
     courier_id: 2,
     user_id: 5
+})
+
+
+#1 BetterRx 
+PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.User{
+    name: "user6",
+    username: "user6BetterRx"
+})
+PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Credential{
+    email: "user6@BetterRx.com",
+    user_id: 6
+})
+PrescriptionApp.Repo.insert!(%PrescriptionApp.Accounts.Pharmacy_user{
+    pharmacy_id: 1,
+    user_id: 6
 })

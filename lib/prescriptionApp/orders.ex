@@ -19,11 +19,18 @@ defmodule PrescriptionApp.Orders do
       [%Order{}, ...]
 
   """
-  def list_orders do
-    Order
-    |> Repo.all()
-    |> Repo.preload(:delivery)
-    #Repo.all(Order)
+  def list_orders (%User{} = user) do
+
+    #Order
+    #|> Repo.all()
+    #|> Repo.preload(:delivery)
+    query = from o in PrescriptionApp.Orders.Order,
+    inner_join: u in assoc(o, :user),
+    inner_join: d in assoc(u, :pharmacy_user),
+    inner_join: p in assoc(d, :pharmacy),
+    where: d.user_id == ^user.id 
+    Repo.all(query)
+
   end
 
   
@@ -36,9 +43,13 @@ defmodule PrescriptionApp.Orders do
       [%Event{}, ...]
   
     """
-  def list_today_orders do
-    query = from e in PrescriptionApp.Orders.Order,
-    where: e.pickup_date == ^DateTime.utc_now
+  def list_today_orders (%User{} = user) do
+    query = from o in PrescriptionApp.Orders.Order,
+    inner_join: u in assoc(o, :user),
+    inner_join: d in assoc(u, :pharmacy_user),
+    inner_join: p in assoc(d, :pharmacy),
+    where: o.pickup_date == ^DateTime.utc_now 
+    and d.user_id == ^user.id 
     Repo.all(query)
   end
 

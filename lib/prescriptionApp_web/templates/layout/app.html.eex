@@ -14,13 +14,15 @@
         <nav role="navigation">
           <ul>
 
-
-            <li><a href="/orders">Pharmacy->Orders</a></li>
-            
-            <li><a href="/deliveries">Courier->Orders assigned</a></li>
-            <li><a href="/couriers">Admin->Couriers</a></li>
-            <li><a href="/pharmacies">Admin->Pharmacies</a></li>
-            <li><a href="/users">Admin->Users</a></li>
+             
+              
+              <li><a href="/sessions/new">Login</a></li>
+              <li><a href="/orders">Pharmacy->Orders</a></li>
+              <li><a href="/deliveries">Courier->Orders assigned</a></li>
+              <li><a href="/couriers">Admin->Couriers</a></li>
+              <li><a href="/pharmacies">Admin->Pharmacies</a></li>
+              <li><a href="/users">Admin->Users</a></li>
+              
             
 
             
@@ -28,7 +30,7 @@
           </ul>
         </nav>
         <a href="https://scriptdrop.co/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/scriptDrop.jpeg") %>" alt="Scriptdrop Logo"/>
+          <img src="<%= Routes.static_path(@conn, "/images/scriptDrop.png") %>" alt="Scriptdrop Logo"/>
         </a>
       </section>
     </header>
