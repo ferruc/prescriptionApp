@@ -1,8 +1,0 @@
-<h1>Show Pharmacy user</h1>
-
-<ul>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.pharmacy_user_path(@conn, :edit, @pharmacy_user) %></span>
-<span><%= link "Back", to: Routes.pharmacy_user_path(@conn, :index) %></span>

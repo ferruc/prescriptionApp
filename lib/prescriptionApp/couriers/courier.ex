@@ -2,10 +2,12 @@ defmodule PrescriptionApp.Couriers.Courier do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias PrescriptionApp.Accounts.Courier_user 
+
   schema "couriers" do
     field :courier_address, :string
     field :courier_name, :string
-    #field :pharmacy_id, :id
+    has_many :courier_users, Courier_user
 
     timestamps()
   end

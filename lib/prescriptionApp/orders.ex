@@ -8,6 +8,7 @@ defmodule PrescriptionApp.Orders do
 
   alias PrescriptionApp.Orders.Order
   alias PrescriptionApp.Orders.Delivery
+  alias PrescriptionApp.Accounts.User
 
   @doc """
   Returns the list of orders.
@@ -74,10 +75,11 @@ defmodule PrescriptionApp.Orders do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_order(attrs \\ %{}) do
+  def create_order(%User{} = user,attrs \\ %{}) do
     %Order{}
     |> Order.changeset(attrs)
     |> Ecto.Changeset.cast_assoc(:delivery, with: &Delivery.changeset/2)
+    |> Ecto.Changeset.put_change(:user_id, user.id)
     |> Repo.insert()
   end
 

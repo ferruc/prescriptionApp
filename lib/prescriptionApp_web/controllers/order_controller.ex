@@ -24,7 +24,8 @@ defmodule PrescriptionAppWeb.OrderController do
   end
 
   def create(conn, %{"order" => order_params}) do
-    case Orders.create_order(order_params) do
+    #user_id = conn.assigns.current_user 
+    case Orders.create_order(conn.assigns.current_user, order_params) do
       {:ok, order} ->
         conn
         |> put_flash(:info, "Order created successfully.")

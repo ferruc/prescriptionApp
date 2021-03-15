@@ -17,19 +17,27 @@ defmodule PrescriptionAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    
-    resources "/pharmacies", PharmacyController
-    resources "/orders", OrderController
-    get "/orders", Order_todayController , :today_orders
-    #get "/orders", OrderController , :index
-    resources "/couriers", CourierController
     resources "/users", UserController
-    resources "/deliveries", DeliveryController
-
+    resources "/sessions", SessionController, only: [:new, :create, :delete],
+                                              singleton: true
 
   end
 
+  scope "/", PrescriptionAppWeb do
+    pipe_through [:browser, :authenticate_user]
+  
+    resources "/pharmacies", PharmacyController
+    resources "/orders", OrderController
+    #get "/orders", OrderController , :index
+    resources "/couriers", CourierController
 
+    resources "/deliveries", DeliveryController
+
+  end
+
+ 
+
+  
 
   #scope "/admin", PrescriptionAppWeb.Admin, as: :admin do
   #  pipe_through :browser
@@ -37,7 +45,17 @@ defmodule PrescriptionAppWeb.Router do
   #  resources "/pharmacies", PharmacyController
   #end
 
-  
+  defp authenticate_user(conn, _) do
+    case get_session(conn, :user_id) do
+      nil ->
+        conn
+        |> Phoenix.Controller.put_flash(:error, "Login required")
+        |> Phoenix.Controller.redirect(to: "/")
+        |> halt()
+      user_id ->
+        assign(conn, :current_user, PrescriptionApp.Accounts.get_user!(user_id))
+    end
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", PrescriptionAppWeb do

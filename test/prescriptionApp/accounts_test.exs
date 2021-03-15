@@ -120,4 +120,120 @@ defmodule PrescriptionApp.AccountsTest do
       assert %Ecto.Changeset{} = Accounts.change_pharmacy_user(pharmacy_user)
     end
   end
+
+  describe "credentials" do
+    alias PrescriptionApp.Accounts.Credential
+
+    @valid_attrs %{email: "some email"}
+    @update_attrs %{email: "some updated email"}
+    @invalid_attrs %{email: nil}
+
+    def credential_fixture(attrs \\ %{}) do
+      {:ok, credential} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Accounts.create_credential()
+
+      credential
+    end
+
+    test "list_credentials/0 returns all credentials" do
+      credential = credential_fixture()
+      assert Accounts.list_credentials() == [credential]
+    end
+
+    test "get_credential!/1 returns the credential with given id" do
+      credential = credential_fixture()
+      assert Accounts.get_credential!(credential.id) == credential
+    end
+
+    test "create_credential/1 with valid data creates a credential" do
+      assert {:ok, %Credential{} = credential} = Accounts.create_credential(@valid_attrs)
+      assert credential.email == "some email"
+    end
+
+    test "create_credential/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_credential(@invalid_attrs)
+    end
+
+    test "update_credential/2 with valid data updates the credential" do
+      credential = credential_fixture()
+      assert {:ok, %Credential{} = credential} = Accounts.update_credential(credential, @update_attrs)
+      assert credential.email == "some updated email"
+    end
+
+    test "update_credential/2 with invalid data returns error changeset" do
+      credential = credential_fixture()
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_credential(credential, @invalid_attrs)
+      assert credential == Accounts.get_credential!(credential.id)
+    end
+
+    test "delete_credential/1 deletes the credential" do
+      credential = credential_fixture()
+      assert {:ok, %Credential{}} = Accounts.delete_credential(credential)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_credential!(credential.id) end
+    end
+
+    test "change_credential/1 returns a credential changeset" do
+      credential = credential_fixture()
+      assert %Ecto.Changeset{} = Accounts.change_credential(credential)
+    end
+  end
+
+  describe "courier_users" do
+    alias PrescriptionApp.Accounts.Courier_user
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def courier_user_fixture(attrs \\ %{}) do
+      {:ok, courier_user} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Accounts.create_courier_user()
+
+      courier_user
+    end
+
+    test "list_courier_users/0 returns all courier_users" do
+      courier_user = courier_user_fixture()
+      assert Accounts.list_courier_users() == [courier_user]
+    end
+
+    test "get_courier_user!/1 returns the courier_user with given id" do
+      courier_user = courier_user_fixture()
+      assert Accounts.get_courier_user!(courier_user.id) == courier_user
+    end
+
+    test "create_courier_user/1 with valid data creates a courier_user" do
+      assert {:ok, %Courier_user{} = courier_user} = Accounts.create_courier_user(@valid_attrs)
+    end
+
+    test "create_courier_user/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_courier_user(@invalid_attrs)
+    end
+
+    test "update_courier_user/2 with valid data updates the courier_user" do
+      courier_user = courier_user_fixture()
+      assert {:ok, %Courier_user{} = courier_user} = Accounts.update_courier_user(courier_user, @update_attrs)
+    end
+
+    test "update_courier_user/2 with invalid data returns error changeset" do
+      courier_user = courier_user_fixture()
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_courier_user(courier_user, @invalid_attrs)
+      assert courier_user == Accounts.get_courier_user!(courier_user.id)
+    end
+
+    test "delete_courier_user/1 deletes the courier_user" do
+      courier_user = courier_user_fixture()
+      assert {:ok, %Courier_user{}} = Accounts.delete_courier_user(courier_user)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_courier_user!(courier_user.id) end
+    end
+
+    test "change_courier_user/1 returns a courier_user changeset" do
+      courier_user = courier_user_fixture()
+      assert %Ecto.Changeset{} = Accounts.change_courier_user(courier_user)
+    end
+  end
 end

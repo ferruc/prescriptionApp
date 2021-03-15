@@ -3,6 +3,7 @@ defmodule PrescriptionApp.Orders.Order do
   import Ecto.Changeset
 
   alias PrescriptionApp.Orders.Delivery
+  alias PrescriptionApp.Accounts.User
 
   schema "orders" do
     field :address, :string
@@ -10,9 +11,10 @@ defmodule PrescriptionApp.Orders.Order do
     field :patient_name, :string
     field :pickup_date, :date
     field :pickup_time, :time
-    field :user_id, :id
+   # field :user_id, :id
     #field :deliveried, :boolean
     has_one :delivery, Delivery
+    belongs_to :user, User
 
     timestamps()
   end

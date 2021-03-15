@@ -1,5 +1,0 @@
-<h1>Edit Pharmacy user</h1>
-
-<%= render "form.html", Map.put(assigns, :action, Routes.pharmacy_user_path(@conn, :update, @pharmacy_user)) %>
-
-<span><%= link "Back", to: Routes.pharmacy_user_path(@conn, :index) %></span>
